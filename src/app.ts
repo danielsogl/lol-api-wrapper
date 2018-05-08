@@ -39,11 +39,11 @@ options({
 });
 
 // Use Redis for Production builds
-// if (CACHE_TYPE === 'redis') {
-//   options({
-//     redisClient: redis.createClient(REDIS_URL)
-//   });
-// }
+if (CACHE_TYPE === 'redis') {
+  options({
+    redisClient: redis.createClient(REDIS_URL)
+  });
+}
 
 // Express configuration
 app.set('port', process.env.PORT || 8080);
