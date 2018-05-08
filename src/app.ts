@@ -56,16 +56,18 @@ app.enable('trust proxy');
 // Compress results
 app.use(compression());
 
+app.use(cache('1 day'));
+
 // Routes
-app.get('/', cache('1 day'), apiController.getInfo);
+app.get('/', apiController.getInfo);
 app.get('/champion-masteries*', championMasteryController.handleRequest);
-app.get('/champions*', cache('1 hour'), championController.handleRequest);
+app.get('/champions*', championController.handleRequest);
 app.get('/leagues*', leagueController.handleRequest);
-app.get('/static-data*', cache('1 hour'), staticDataController.handleRequest);
+app.get('/static-data*', staticDataController.handleRequest);
 app.get('/status*', statusController.handleRequest);
 app.get('/match*', matchController.handleRequest);
 app.get('/spectator*', spectatorController.handleRequest);
-app.get('/summoners*', cache('1 day'), summonerController.handleRequest);
+app.get('/summoners*', summonerController.handleRequest);
 app.get('/third-party-code*', thirdPartyController.handleRequest);
 app.get('/tournament-stub*', tournamentStubController.handleRequest);
 app.get('/tournament*', tournamentController.handleRequest);
