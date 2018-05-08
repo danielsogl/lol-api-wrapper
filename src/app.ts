@@ -1,4 +1,4 @@
-import { clear, middleware, options } from 'apicache';
+import { middleware, options } from 'apicache';
 import compression from 'compression';
 import cors from 'cors';
 import dotenv from 'dotenv';
@@ -7,9 +7,9 @@ import helmet from 'helmet';
 import redis from 'redis';
 
 import * as apiController from './controllers/api';
-import * as clearCacheController from './controllers/clear-cache';
 import * as championController from './controllers/champion';
 import * as championMasteryController from './controllers/champion-mastery';
+import * as clearCacheController from './controllers/clear-cache';
 import * as leagueController from './controllers/league.';
 import * as staticDataController from './controllers/lol-static-data';
 import * as statusController from './controllers/lol-status';
