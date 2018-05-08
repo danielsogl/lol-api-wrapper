@@ -44,6 +44,7 @@
     "winston": "^2.4.2"
   },
   "devDependencies": {
+    "@types/apicache": "^1.2.0",
     "@types/compression": "0.0.36",
     "@types/cors": "^2.8.4",
     "@types/dotenv": "^4.0.3",
@@ -54,6 +55,7 @@
     "@types/node": "9.6.12",
     "@types/redis": "^2.8.6",
     "@types/supertest": "^2.0.4",
+    "@types/url-params": "^1.0.0",
     "@types/winston": "^2.3.9",
     "concurrently": "^3.5.1",
     "jest": "^22.4.3",
