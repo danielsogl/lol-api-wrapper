@@ -7,6 +7,7 @@ import helmet from 'helmet';
 import redis from 'redis';
 
 import * as apiController from './controllers/api';
+import * as clearCacheController from './controllers/clear-cache';
 import * as championController from './controllers/champion';
 import * as championMasteryController from './controllers/champion-mastery';
 import * as leagueController from './controllers/league.';
@@ -32,13 +33,12 @@ const cache = middleware;
 // Configure cache
 options({
   statusCodes: {
-    exclude: [400, 401, 405, 500],
+    exclude: [400, 401, 403, 404, 415, 429, 500, 503],
     include: [200, 304]
   }
 });
 
 // Use Redis for Production builds
-// If you want to use the default memory caching, uncomment this line
 if (CACHE_TYPE === 'redis') {
   options({
     redisClient: redis.createClient(REDIS_URL)
@@ -57,7 +57,7 @@ app.enable('trust proxy');
 app.use(compression());
 
 // Routes
-app.get('/', apiController.getInfo);
+app.get('/', cache('1 day'), apiController.getInfo);
 app.get('/champion-masteries*', championMasteryController.handleRequest);
 app.get('/champions*', cache('1 hour'), championController.handleRequest);
 app.get('/leagues*', leagueController.handleRequest);
@@ -69,14 +69,7 @@ app.get('/summoners*', summonerController.handleRequest);
 app.get('/third-party-code*', thirdPartyController.handleRequest);
 app.get('/tournament-stub*', tournamentStubController.handleRequest);
 app.get('/tournament*', tournamentController.handleRequest);
-
-// Cache cleaning
-app.get('/clear-cache/summoner/:summonerId', (req, res) => {
-  clear(`summonerId-${req.params.summonerId}`);
-  res.status(200).json({
-    message: 'Cache cleared'
-  });
-});
+app.get('/clear-cache/summoner', clearCacheController.handleRequest);
 
 // Error Handling
 app.use((req, res) => {
