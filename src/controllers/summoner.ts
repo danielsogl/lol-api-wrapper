@@ -5,7 +5,12 @@ import { add } from 'url-params';
 import { API_KEY } from '../util/secrets';
 import { getRegionEndpoint } from '../util/url-builder';
 
-export let handleRequest = (req: Request, res: Response) => {
+export let handleRequest = (req: any, res: Response) => {
+  if (!(req.url as string).includes('/by-name')) {
+    const splitArray: string[] = (req.params[0] as string).split('/');
+    req.apicacheGroup = splitArray[splitArray.length - 1];
+  }
+
   axios
     .get(buildUrl(req.url, req.params.region))
     .then(response => {

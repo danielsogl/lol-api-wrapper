@@ -1,4 +1,4 @@
-import { middleware, options } from 'apicache';
+import { middleware, options, getIndex } from 'apicache';
 import compression from 'compression';
 import cors from 'cors';
 import dotenv from 'dotenv';
@@ -34,7 +34,7 @@ const cache = middleware;
 options({
   statusCodes: {
     exclude: [400, 401, 403, 404, 415, 429, 500, 503],
-    include: [200, 304]
+    include: [200, 201, 304]
   }
 });
 
@@ -65,11 +65,16 @@ app.get('/static-data*', cache('1 hour'), staticDataController.handleRequest);
 app.get('/status*', statusController.handleRequest);
 app.get('/match*', matchController.handleRequest);
 app.get('/spectator*', spectatorController.handleRequest);
-app.get('/summoners*', summonerController.handleRequest);
+app.get('/summoners*', cache('1 day'), summonerController.handleRequest);
 app.get('/third-party-code*', thirdPartyController.handleRequest);
 app.get('/tournament-stub*', tournamentStubController.handleRequest);
 app.get('/tournament*', tournamentController.handleRequest);
 app.get('/clear-cache/summoner', clearCacheController.handleRequest);
+
+// add route to display cache index
+app.get('/api/cache/index', (req, res) => {
+  res.json(getIndex());
+});
 
 // Error Handling
 app.use((req, res) => {
