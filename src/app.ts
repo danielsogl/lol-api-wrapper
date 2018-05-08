@@ -69,7 +69,10 @@ app.get('/summoners*', cache('1 day'), summonerController.handleRequest);
 app.get('/third-party-code*', thirdPartyController.handleRequest);
 app.get('/tournament-stub*', tournamentStubController.handleRequest);
 app.get('/tournament*', tournamentController.handleRequest);
-app.get('/clear-cache/summoner', clearCacheController.handleRequest);
+app.get(
+  '/clear-cache/summoner/:summonerId',
+  clearCacheController.handleRequest
+);
 
 // add route to display cache index
 app.get('/api/cache/index', (req, res) => {
