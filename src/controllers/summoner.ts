@@ -12,7 +12,7 @@ export let handleRequest = (req: any, res: Response) => {
     req.apicacheGroup = `summonerId-${splitArray[splitArray.length - 1]}`;
 
     axios
-      .get(buildUrl(req.url, req.params.region))
+      .get(buildUrl(req.url, req.param('region')))
       .then(response => {
         res.status(response.status);
         res.json(response.data);
@@ -25,7 +25,7 @@ export let handleRequest = (req: any, res: Response) => {
       });
   } else {
     axios
-      .get(buildUrl(req.url, req.params.region))
+      .get(buildUrl(req.url, req.param('region')))
       .then(response => {
         res.status(response.status);
         res.json(response.data);
