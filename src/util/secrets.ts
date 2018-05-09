@@ -17,7 +17,12 @@ export const CACHE_TYPE = process.env['CACHE_TYPE'] || 'memory';
 export const REDIS_URL = process.env['REDIS_URL'];
 export const SESSION_SECRET = process.env['SESSION_SECRET'];
 
-// if (!API_KEY) {
-//   logger.error('No public api key. Set PUBLIC_KEY environment variable.');
-//   process.exit(1);
-// }
+if (!API_KEY) {
+  logger.error('No api key. Set API_KEY environment variable.');
+  process.exit(1);
+}
+
+if (!SESSION_SECRET) {
+  logger.error('No session secret. Set SESSION_SECRET environment variable.');
+  process.exit(1);
+}
