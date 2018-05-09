@@ -15,6 +15,7 @@ export const API_KEY = process.env['API_KEY'];
 export const DEFAULT_REGION = process.env['DEFAULT_REGION'] || 'euw';
 export const CACHE_TYPE = process.env['CACHE_TYPE'] || 'memory';
 export const REDIS_URL = process.env['REDIS_URL'];
+export const SESSION_SECRET = process.env['SESSION_SECRET'];
 
 // if (!API_KEY) {
 //   logger.error('No public api key. Set PUBLIC_KEY environment variable.');

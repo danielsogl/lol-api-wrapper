@@ -1,8 +1,9 @@
-import { middleware, options, getIndex } from 'apicache';
+import { getIndex, middleware, options } from 'apicache';
 import compression from 'compression';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import express from 'express';
+import session from 'express-session';
 import helmet from 'helmet';
 import redis from 'redis';
 
@@ -19,7 +20,7 @@ import * as summonerController from './controllers/summoner';
 import * as thirdPartyController from './controllers/third-party-code';
 import * as tournamentController from './controllers/tournament';
 import * as tournamentStubController from './controllers/tournament-stub';
-import { CACHE_TYPE, REDIS_URL } from './util/secrets';
+import { CACHE_TYPE, REDIS_URL, SESSION_SECRET } from './util/secrets';
 
 // Load environment variables from .env file, where API keys and passwords are configured
 dotenv.config({ path: '.env' });
@@ -55,6 +56,17 @@ app.use(helmet());
 app.enable('trust proxy');
 // Compress results
 app.use(compression());
+
+// Set Session
+app.set('trust proxy', 1);
+app.use(
+  session({
+    secret: SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }
+  })
+);
 
 // Routes
 app.get('/', apiController.getInfo);
