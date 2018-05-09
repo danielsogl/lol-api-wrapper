@@ -10,33 +10,20 @@ export let handleRequest = (req: any, res: Response) => {
     console.log('Cache groupe');
     const splitArray: string[] = (req.params[0] as string).split('/');
     req.apicacheGroup = `summonerId-${splitArray[splitArray.length - 1]}`;
-
-    axios
-      .get(buildUrl(req.url, req.query.region))
-      .then(response => {
-        res.status(response.status);
-        res.json(response.data);
-      })
-      .catch(err => {
-        res.status(500).json({
-          error: 500,
-          message: 'Internal Server Error'
-        });
-      });
-  } else {
-    axios
-      .get(buildUrl(req.url, req.query.region))
-      .then(response => {
-        res.status(response.status);
-        res.json(response.data);
-      })
-      .catch(err => {
-        res.status(500).json({
-          error: 500,
-          message: 'Internal Server Error'
-        });
-      });
   }
+
+  axios
+    .get(buildUrl(req.url, req.query.region))
+    .then(response => {
+      res.status(response.status);
+      res.json(response.data);
+    })
+    .catch(err => {
+      res.status(500).json({
+        error: 500,
+        message: 'Internal Server Error'
+      });
+    });
 };
 
 function buildUrl(requestUrl: string, region: string): string {

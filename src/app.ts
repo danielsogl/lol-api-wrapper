@@ -75,7 +75,7 @@ app.get('/champions*', championController.handleRequest);
 app.get('/leagues*', leagueController.handleRequest);
 app.get('/static-data*', staticDataController.handleRequest);
 app.get('/status*', statusController.handleRequest);
-app.get('/match*', matchController.handleRequest);
+app.get('/match*', cache('1 day'), matchController.handleRequest);
 app.get('/spectator*', spectatorController.handleRequest);
 app.get('/summoners*', cache('1 day'), summonerController.handleRequest);
 app.get('/third-party-code*', thirdPartyController.handleRequest);
