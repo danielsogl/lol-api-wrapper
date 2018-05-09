@@ -7,7 +7,7 @@ import { getRegionEndpoint } from '../util/url-builder';
 
 export let handleRequest = (req: Request, res: Response) => {
   axios
-    .get(buildUrl(req.url, req.param('region')))
+    .get(buildUrl(req.url, req.query.region))
     .then(response => {
       res.status(response.status);
       res.json(response.data);

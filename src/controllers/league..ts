@@ -7,7 +7,7 @@ import { getRegionEndpoint } from '../util/url-builder';
 
 export let handleRequest = (req: Request, res: Response) => {
   axios
-    .get(buildUrl(req.url, req.param('region')))
+    .get(buildUrl(req.url, req.query.region))
     .then(response => {
       res.status(response.status);
       res.json(response.data);
@@ -23,7 +23,7 @@ export let handleRequest = (req: Request, res: Response) => {
 function buildUrl(requestUrl: string, region: string): string {
   let url = `https://${getRegionEndpoint(
     region
-  )}/lol/league/v3${requestUrl.replace('//leagues/g', '')}`;
+  )}/lol/league/v3${requestUrl.replace('/leagues', '')}`;
   // Add api key
   url = add(url, 'api_key', API_KEY);
   // Return url
