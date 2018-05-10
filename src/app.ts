@@ -77,7 +77,7 @@ app.get(
   championMasteryController.handleRequest
 );
 app.get('/champions*', cache('1 hour'), championController.handleRequest);
-app.get('/leagues*', leagueController.handleRequest);
+app.get('/leagues*', cache('1 day'), leagueController.handleRequest);
 app.get('/static-data*', cache('1 hour'), staticDataController.handleRequest);
 app.get('/status*', statusController.handleRequest);
 app.get('/match*', cache('1 day'), matchController.handleRequest);
