@@ -19,10 +19,8 @@ export let handleRequest = (req: any, res: Response) => {
       res.json(response.data);
     })
     .catch(err => {
-      res.status(500).json({
-        error: 500,
-        message: 'Internal Server Error'
-      });
+      res.status(err.response.status);
+      res.json(err.response.data);
     });
 };
 
