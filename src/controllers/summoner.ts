@@ -7,7 +7,6 @@ import { getRegionEndpoint } from '../util/url-builder';
 
 export let handleRequest = (req: any, res: Response) => {
   if (!(req.url as string).includes('/by-name')) {
-    console.log('Cache groupe');
     const splitArray: string[] = (req.params[0] as string).split('/');
     req.apicacheGroup = `summonerId-${splitArray[splitArray.length - 1]}`;
   }

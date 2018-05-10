@@ -70,7 +70,11 @@ app.use(
 
 // Routes
 app.get('/', apiController.getInfo);
-app.get('/champion-masteries*', championMasteryController.handleRequest);
+app.get(
+  '/champion-masteries*',
+  cache('1 day'),
+  championMasteryController.handleRequest
+);
 app.get('/champions*', cache('1 hour'), championController.handleRequest);
 app.get('/leagues*', leagueController.handleRequest);
 app.get('/static-data*', cache('1 hour'), staticDataController.handleRequest);
