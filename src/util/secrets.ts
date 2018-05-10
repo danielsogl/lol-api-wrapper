@@ -12,6 +12,7 @@ export const ENVIRONMENT = process.env.NODE_ENV;
 const prod = ENVIRONMENT === 'production'; // Anything else is treated as 'dev'
 
 export const API_KEY = process.env['API_KEY'];
+export const CHAMPION_GG_KEY = process.env['CHAMPION_GG_KEY'];
 export const DEFAULT_REGION = process.env['DEFAULT_REGION'] || 'euw';
 export const CACHE_TYPE = process.env['CACHE_TYPE'] || 'memory';
 export const REDIS_URL = process.env['REDIS_URL'];
@@ -19,6 +20,13 @@ export const SESSION_SECRET = process.env['SESSION_SECRET'];
 
 if (!API_KEY) {
   logger.error('No api key. Set API_KEY environment variable.');
+  process.exit(1);
+}
+
+if (!CHAMPION_GG_KEY) {
+  logger.error(
+    'No champion.gg api key. Set CHAMPION_GG_KEY environment variable.'
+  );
   process.exit(1);
 }
 
