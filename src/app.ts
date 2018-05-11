@@ -86,7 +86,11 @@ app.get('/summoners*', cache('1 day'), summonerController.handleRequest);
 app.get('/third-party-code*', thirdPartyController.handleRequest);
 app.get('/tournament-stub*', tournamentStubController.handleRequest);
 app.get('/tournament*', tournamentController.handleRequest);
-app.get('/stats/champions', cache('1 day'), championGGController.handleRequest);
+app.get(
+  '/stats/champions*',
+  cache('1 day'),
+  championGGController.handleRequest
+);
 app.get(
   '/clear-cache/summoner/:summonerId',
   clearCacheController.handleRequest
