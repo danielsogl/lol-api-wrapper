@@ -1,0 +1,14 @@
+{
+    "name": "League of Legends Api Wrapper",
+    "description": "A ready to run LoL Api wrapper powered by Express.js and TypeScript",
+    "repository": "https://github.com/danielsogl/lol-api-wrapper",
+    "logo": "https://camo.githubusercontent.com/a51b0656c6a6851b965379f6efa5400501d3347e/68747470733a2f2f7669676e657474652e77696b69612e6e6f636f6f6b69652e6e65742f6c65616775656f666c6567656e64732f696d616765732f382f38362f4c65616775655f6f665f6c6567656e64735f6c6f676f5f7472616e73706172656e742e706e67",
+    "keywords": ["node", "express", "api", "redis", "typescript", "riot", "league of legends"],
+    "success_url": "/",
+    "addons": ["heroku-redis:hobby"],
+    "env": {
+        "DEFAULT_REGION": "EUW",
+        "CACHE_TYPE": "redis",
+        "SESSION_SECRET": "dhgqjdqsdqwdquasid"
+    }
+}
