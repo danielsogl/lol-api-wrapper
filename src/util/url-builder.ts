@@ -1,49 +1,52 @@
-export function getRegionEndpoint(region: string): string {
+import { RIOT_ENDPOINT } from './settings';
+import { DEFAULT_REGION } from './secrets';
+
+export function getRegionEndpoint(region?: string): string {
   let regionEndpoint: string;
 
   if (!region) {
-    return 'euw1.api.riotgames.com';
+    region = DEFAULT_REGION;
   }
 
   switch (region.toUpperCase()) {
     case 'BR':
-      regionEndpoint = 'br1.api.riotgames.com';
+      regionEndpoint = 'br1.' + RIOT_ENDPOINT;
       break;
     case 'EUNE':
-      regionEndpoint = 'eun1.api.riotgames.com';
+      regionEndpoint = 'eun1.' + RIOT_ENDPOINT;
       break;
     case 'EUW':
-      regionEndpoint = 'euw1.api.riotgames.com';
+      regionEndpoint = 'euw1.' + RIOT_ENDPOINT;
       break;
     case 'JP':
-      regionEndpoint = 'jp1.api.riotgames.com';
+      regionEndpoint = 'jp1.' + RIOT_ENDPOINT;
       break;
     case 'KR':
-      regionEndpoint = 'kr.api.riotgames.com';
+      regionEndpoint = 'kr.' + RIOT_ENDPOINT;
       break;
     case 'LAN':
-      regionEndpoint = 'la1.api.riotgames.com';
+      regionEndpoint = 'la1.' + RIOT_ENDPOINT;
       break;
     case 'LAS':
-      regionEndpoint = 'la2.api.riotgames.com';
+      regionEndpoint = 'la2.' + RIOT_ENDPOINT;
       break;
     case 'NA':
-      regionEndpoint = 'na1.api.riotgames.com';
+      regionEndpoint = 'na1.' + RIOT_ENDPOINT;
       break;
     case 'OCE':
-      regionEndpoint = 'oc1.api.riotgames.com';
+      regionEndpoint = 'oc1.' + RIOT_ENDPOINT;
       break;
     case 'TR':
-      regionEndpoint = 'tr1.api.riotgames.com';
+      regionEndpoint = 'tr1.' + RIOT_ENDPOINT;
       break;
     case 'RU':
-      regionEndpoint = 'ru.api.riotgames.com';
+      regionEndpoint = 'ru.' + RIOT_ENDPOINT;
       break;
     case 'PBE':
-      regionEndpoint = 'pbe1.api.riotgames.com';
+      regionEndpoint = 'pbe1.' + RIOT_ENDPOINT;
       break;
     default:
-      regionEndpoint = 'euw1.api.riotgames.com';
+      regionEndpoint = 'euw1.' + RIOT_ENDPOINT;
       break;
   }
 

@@ -3,7 +3,7 @@ import { Request, Response } from 'express';
 import { add } from 'url-params';
 
 import { CHAMPION_GG_KEY } from '../util/secrets';
-import { getRegionEndpoint } from '../util/url-builder';
+import { CHAMPION_GG_ENDPOINT } from '../util/settings';
 
 export let handleRequest = (req: Request, res: Response) => {
   console.log(buildUrl(req.url));
@@ -21,7 +21,7 @@ export let handleRequest = (req: Request, res: Response) => {
 };
 
 function buildUrl(requestUrl: string): string {
-  let url = `http://api.champion.gg/v2${requestUrl.replace('/stats', '')}`;
+  let url = `${CHAMPION_GG_ENDPOINT}${requestUrl.replace('/stats', '')}`;
   // Add api key
   url = add(url, 'api_key', CHAMPION_GG_KEY);
   // Return url
