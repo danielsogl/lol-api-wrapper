@@ -4,7 +4,7 @@
 
 A ready to run LoL API wrapper powered by [Express.js](http://expressjs.com/de/) and [TypeScript](https://www.typescriptlang.org)
 
-![LoL Logo](https://upload.wikimedia.org/wikipedia/de/f/ff/New_LoL_logo_ON_WHITE.jpg 'LoL API Wrapper')
+![LoL Logo](https://vignette.wikia.nocookie.net/leagueoflegends/images/8/86/League_of_legends_logo_transparent.png 'LoL API Wrapper')
 
 ## About
 
@@ -15,6 +15,18 @@ This repository allows you to use the official [LoL API](https://developer.riotg
 * Only requests without another LoL Api library
 
 ## Setup
+
+To run the server you have to set following node environment variables. You can use the `.env.EXAMPLE` file to fill them out.
+
+* `API_KEY`: Your League of Legends API Key. You can generate your own key [here](https://developer.riotgames.com)
+* `CHAMPION_GG_KEY`: Your Champion.gg API Key. You can generate your own key [here](http://api.champion.gg)
+* `DEFAULT_REGION`: The default API region (EUW, NA, TR etc.)
+* `SESSION_SECRET`: The API Session private key. Just generate a random key
+
+If you want to use redis without heroku you have to set the following key
+
+* `REDIS_URL`: YOur redis endpoint url
+* `CACHE_TYPE=redis`
 
 ## Build
 
