@@ -7,8 +7,10 @@
     "success_url": "/",
     "addons": ["heroku-redis:hobby"],
     "env": {
+        "API_KEY": "",
+        "CHAMPION_GG_KEY": "",
         "DEFAULT_REGION": "EUW",
         "CACHE_TYPE": "redis",
-        "SESSION_SECRET": "dhgqjdqsdqwdquasid"
+        "SESSION_SECRET": ""
     }
 }
