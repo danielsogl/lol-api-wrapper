@@ -1,8 +1,10 @@
-# Marvel API Wrapper
+# League of Legends API Wrapper
 
 [![Build Status](https://travis-ci.org/danielsogl/marvel-api-wrapper.svg?branch=master)](https://travis-ci.org/danielsogl/marvel-api-wrapper)
 
-A simple ready to run LoL API wrapper powered by [Express.js](http://expressjs.com/de/) and [TypeScript](https://www.typescriptlang.org)
+A ready to run LoL API wrapper powered by [Express.js](http://expressjs.com/de/) and [TypeScript](https://www.typescriptlang.org)
+
+![LoL Logo](https://upload.wikimedia.org/wikipedia/de/f/ff/New_LoL_logo_ON_WHITE.jpg 'LoL API Wrapper')
 
 ## About
 
